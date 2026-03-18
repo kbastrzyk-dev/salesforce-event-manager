@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Full-Stack Data Fetch" icon-name="standard:contact">
+        <div class="slds-m-around_medium">
+            <p><strong>The Account ID is:</strong> {recordId}</p>
+            <br/>
+            
+            <template if:true={contacts.data}>
+                <p><strong>Related Contacts:</strong></p>
+                <ul>
+                    <template for:each={contacts.data} for:item="contact">
+                        <li key={contact.Id}>
+                            {contact.Name} - {contact.Title}
+                        </li>
+                    </template>
+                </ul>
+            </template>
+            
+            <template if:true={contacts.error}>
+                <p style="color:red;">Error fetching contacts!</p>
+            </template>
+            
+        </div>
+    </lightning-card>
+</template>

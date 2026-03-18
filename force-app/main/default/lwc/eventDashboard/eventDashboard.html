@@ -1,0 +1,36 @@
+<template>
+    <lightning-card title="Upcoming Events Dashboard" icon-name="standard:event">
+        <div class="slds-m-around_medium">
+            
+            <template if:true={events.data}>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th scope="col" title="Event Name"><strong>Event Name</strong></th>
+                            <th scope="col" title="Event Date"><strong>Date</strong></th>
+                            <th scope="col" title="Capacity"><strong>Max Capacity</strong></th>
+                            <th scope="col" title="Registered"><strong>Registered</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={events.data} for:item="event">
+                            <tr key={event.Id}>
+                                <td>{event.Name}</td>
+                                <td>{event.Event_Date__c}</td>
+                                <td>{event.Max_Capacity__c}</td>
+                                <td>
+                                    <lightning-badge label={event.Registered_Attendees__c} class="slds-theme_success"></lightning-badge>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </template>
+
+            <template if:true={events.error}>
+                <p class="slds-text-color_error">Error loading events. Check your Apex controller!</p>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>
