@@ -1,18 +1,15 @@
-# Salesforce DX Project: Next Steps
+# Salesforce Event & Waitlist Automation Engine
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+## Project Overview
+Full-stack Salesforce application built for a fictional client ("Astro Tech") to automate their event registration process. The system automatically manages event capacity, blocks overbooking, and features a self-healing waitlist engine that automatically promotes users when spots open up.
 
-## How Do You Plan to Deploy Your Changes?
+## Key Features
+* **Automated Capacity Management:** Apex Triggers automatically block users from registering for full events and route them to a Waitlist.
+* **Auto-Promotion Engine:** When a registered user cancels, the backend automatically queries the database for the oldest waitlisted user and upgrades their status to 'Registered'.
+* **Full-Stack Dashboard:** A custom Lightning Web Component (LWC) that queries live database metrics to display a reactive, real-time UI grid of upcoming events and their current capacity.
+* **Declarative Foundation:** Utilizes Custom Objects (`Event__c`, `Attendee__c`), Master-Detail relationships, and Roll-Up Summary fields to minimize code and maximize platform limits.
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
-
-## Configure Your Salesforce DX Project
-
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
-
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+## Technology Stack
+* **Backend:** Apex (Triggers, Handler Pattern, SOQL)
+* **Frontend:** Lightning Web Components (LWC), JavaScript, HTML, SLDS (Salesforce Lightning Design System)
+* **Database:** Salesforce SOQL, Custom Objects, Roll-Up Summaries
